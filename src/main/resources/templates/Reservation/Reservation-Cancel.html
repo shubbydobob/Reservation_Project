@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>예약 취소</title>
+</head>
+<body>
+<h1>예약 취소</h1>
+
+<!-- 예약 취소 후 취소된 예약 정보 표시 -->
+<div th:if="${cancelledReservation != null}">
+    <p>예약이 성공적으로 취소되었습니다.</p>
+    <p>회원님: <span th:text="${loggedInUser.name}"></span>님</p> <!-- 로그인한 사용자 이름 표시 -->
+    <p>공연명: <span th:text="${cancelledReservation.concertName}"></span></p>
+    <p>취소된 날짜: <span th:text="${cancelledReservation.concertDate}"></span></p>
+    <p>취소된 시간: <span th:text="${cancelledReservation.concertTime}"></span></p>
+    <p>취소된 좌석: <span th:text="${cancelledReservation.seats}"></span></p>
+    <a href="/Reservation">예약 페이지로 돌아가기</a>
+</div>
+
+<!-- 예약 정보가 없을 경우 -->
+<div th:if="${cancelledReservation == null}">
+    <p>예약 취소에 실패했습니다. 다시 시도해 주세요.</p>
+    <a href="/Reservation">예약 페이지로 돌아가기</a>
+</div>
+</body>
+</html>3

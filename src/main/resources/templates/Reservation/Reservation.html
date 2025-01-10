@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>콘서트 예매</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+    <link href="/css/Reservation/Reservation.css" rel="stylesheet">
+    <script src="/js/Reservation/Reservation.js"></script>
+</head>
+<body>
+<main>
+    <form action="/Reservation" id="reservation-form" method="POST">
+
+        <section class="date-selection">
+            <h2>1️⃣ 날짜 및 시간 선택</h2>
+            <label for="concert-name">공연명:</label>
+            <input id="concert-name" name="concertName" required type="text">
+
+            <label for="concert-date">날짜:</label>
+            <input id="concert-date" name="concertDate" type="date">
+
+            <label for="concert-time">시간:</label>
+            <input id="concert-time" name="concertTime" type="time" value="18:00"> <!-- 기본시간 설정 -->
+        </section>
+
+        <section class="seat-selection">
+            <h2>2️⃣ 좌석 선택</h2>
+            <div id="seat-map">
+                <!-- 좌석 맵을 여기에 생성 (JavaScript로 동적으로 추가될 부분) -->
+            </div>
+        </section>
+
+        <section class="summary">
+            <h2>3️⃣ 선택 내역</h2>
+            <div class="summary-content">
+                <p>선택한 공연명: <span id="summary-concert-name">-</span></p> <!-- 공연명을 여기에 표시 -->
+                <p>선택한 날짜: <span id="summary-date">-</span></p>
+                <p>선택한 시간: <span id="summary-time">-</span></p>
+                <p>예약자: <span th:text="${loggedInUser.name}"></span></p>
+                <p>선택한 좌석:</p>
+                <ul id="selected-seats"></ul>
+                <input id="selected-seats-input" name="seats" type="hidden">
+                <button disabled id="reserve-button" type="submit">예약하기</button>
+            </div>
+        </section>
+    </form>
+</main>
+<footer>
+    <p>© 2024 콘서트 좌석 예약 시스템</p>
+</footer>
+</body>
+</html>

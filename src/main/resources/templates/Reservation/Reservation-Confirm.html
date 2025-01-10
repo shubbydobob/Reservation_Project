@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>예약 확인</title>
+</head>
+<body>
+<h1>예약 확인</h1>
+<!-- reservation 객체가 null일 경우를 대비한 처리 -->
+<div th:if="${reservation == null}">
+    <p>예약 정보가 없습니다. 다시 시도해 주세요.</p>
+    <a href="/Reservation">예약 페이지로 돌아가기</a>
+</div>
+
+<!-- reservation 객체가 null이 아닐 경우 -->
+<div th:if="${reservation != null}">
+    <p>예약이 완료되었습니다.</p>
+    <p>회원님: <span th:text="${loggedInUser.name}"></span>님</p> <!-- 로그인한 사용자 이름 표시 -->
+    <p>공연명: <span th:text="${reservation.concertName}"></span></p>
+    <p>선택한 날짜: <span th:text="${reservation.concertDate}"></span></p>
+    <p>선택한 시간: <span th:text="${reservation.concertTime}"></span></p>
+    <p>선택한 좌석: <span th:text="${reservation.seats}"></span></p>
+    <a href="/home">홈으로</a>
+    <a href="/Reservation-Cancel">취소하기</a>
+</div>
+</body>
+</html>

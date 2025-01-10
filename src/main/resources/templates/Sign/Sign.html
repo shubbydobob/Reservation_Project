@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+    <link href="/css/Sign/Sign.css" rel="stylesheet">
+<!--    <script src="/js/Sign/Sign.js"></script>-->
+</head>
+<body>
+<div class="signup-container">
+    <h2>회원가입</h2>
+    <form action="/Sign" id="signupForm" method="post" th:object="${user}">
+        <!-- 아이디 -->
+        <div class="form-group">
+            <label for="userId">아이디 (6-12자)</label>
+            <input id="userId" maxlength="12" minlength="6" name="userId" placeholder="아이디를 입력해주세요"
+                   required th:value="*{userId}" type="text">
+            <button id="checkId" type="button">중복 확인</button>
+        </div>
+
+        <!-- 비밀번호 -->
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input id="password" minlength="8" name="password" placeholder="비밀번호를 입력해주세요" required
+                   th:value="*{password}" type="password">
+        </div>
+
+        <!-- 이름 -->
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input id="name" name="name" placeholder="이름을 입력해주세요" required th:value="*{name}" type="text">
+        </div>
+
+        <!-- 성별 -->
+        <div class="form-group">
+            <label>성별</label>
+            <label>
+                <input name="gender" th:checked="*{gender == '남성'}" type="radio" value="남성"> 남성
+            </label>
+            <label>
+                <input name="gender" th:checked="*{gender == '여성'}" type="radio" value="여성"> 여성
+            </label>
+        </div>
+
+        <!-- 휴대폰 번호 -->
+        <div class="form-group">
+            <label for="phone">휴대폰 번호</label>
+            <input id="phone" name="phone" pattern="\d{3}\d{3,4}\d{4}" placeholder="-를 빼고 입력해주세요" required
+                   th:value="*{phone}" type="tel">
+        </div>
+
+        <!-- 이메일 -->
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input id="email" name="email" placeholder="example@example.com" required th:value="*{email}" type="email">
+        </div>
+
+        <!-- 가입 버튼 -->
+        <div class="form-actions">
+            <button class="signup-button" type="submit">회원가입</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
