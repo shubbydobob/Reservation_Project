@@ -1,0 +1,277 @@
+/* 전체 페이지의 바디 스타일 */
+body {
+     margin: 0;
+     padding: 0;
+     font-family: Arial, sans-serif;
+     background-color: #f9f9f9;
+}
+/* 페이지 컨테이너 */
+.page-container {
+    width: 1400px; /* 전체 너비 고정 */
+    margin: 0 auto; /* 중앙 정렬 */
+    background-color: #fff; /* 배경색 */
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.main-nav {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.main-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    display: block;
+}
+
+.menu-item:hover .sub-menu {
+    display: block;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 5px;
+}
+
+.sub-menu li {
+    padding: 0;
+}
+
+.sub-menu a {
+    padding: 10px 20px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.sub-menu a:hover {
+    background-color: #f7f7f7;
+}
+
+/* 슬라이더 섹션 */
+.concert-slider {
+    position: relative;
+    max-width: 1500px; /* 컨테이너 최대 너비 */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 슬라이드 컨테이너 */
+.concert-container {
+    display: flex;
+    gap: 20px; /* 이미지 간 간격 */
+    transition: transform 0.5s ease-in-out;
+    padding: 0 20px; /* 컨테이너 양쪽 여백 */
+    box-sizing: border-box;
+}
+
+/* 슬라이드 아이템 */
+.concert-item {
+    position: relative;
+    flex: 0 0 calc((100% - 200px) / 4); /* 4개의 이미지와 3개의 gap 계산 */
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 10px;
+
+}
+
+/* 이미지 스타일 */
+.concert-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    cursor: pointer; /* 클릭 가능한 이미지 */
+}
+
+/* 텍스트 오버레이 */
+.slide-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)); /* 투명한 배경 */
+    color: white;
+    text-align: left;
+    font-size: 14px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.details {
+    font-size: 0.9rem;
+}
+
+/* 버튼 스타일 */
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+button img {
+    width: 24px;
+    height: 24px;
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.reservation {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.reservation .left-section {
+    width: 40%;
+}
+
+.reservation .left-section img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.reservation .ticket-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.reservation .ticket-info .social-icons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.reservation .right-section {
+    width: 55%;
+}
+
+.reservation .right-section h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.reservation .right-section ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.reservation .right-section ul li {
+    margin-bottom: 5px;
+}
+
+.reservation .right-section .booking-buttons {
+    margin-top: 20px;
+}
+
+.reservation .booking-buttons .book-btn {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.reservation .booking-buttons .foreign-booking {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

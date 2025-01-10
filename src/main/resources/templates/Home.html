@@ -3,76 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <link href="/css/home.css" rel="stylesheet">
-    <script src="/js/home.js"></script>
-    <title>Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>콘서트 예매</title>
 </head>
 <body>
-<header>
-    <div class="container">
-        <h1>
-            <a th:href="@{/home}">콘서트 예매</a>
-        </h1>
-        <nav>
-            <ul class="main-menu">
-                <li class="menu-item">
-                    <span>콘서트 정보</span>
-                    <ul class="sub-menu">
-                        <li><a th:href="@{/schedule}">콘서트 일정</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <span>예매정보</span>
-                    <ul class="sub-menu">
-                        <li><a th:href="@{/Reservation/Reservation-Confirm}">예약 조회</a></li>
-                        <li><a th:href="@{/Reservation/Reservation-Cancel}">예약 취소</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <div th:if="${isLoggedIn != null and isLoggedIn}">
-                        <span>사용자 메뉴</span>
+<div class="page-container">
+    <header>
+        <div class="header-container">
+            <h1>
+                <a th:href="@{/home}">콘서트 예매</a>
+            </h1>
+            <nav>
+                <ul class="main-menu">
+                    <li class="menu-item">
+                        <span>콘서트 정보</span>
                         <ul class="sub-menu">
-                            <li><a th:href="@{/Logout}">로그아웃</a></li>
-                            <li><a th:href="@{/MyPage}">내 정보</a></li>
+                            <li><a th:href="@{/Schedule}">콘서트 일정</a></li>
+                            <li><a th:href="@{/Inquiry}">정책 문의</a></li>
                         </ul>
-                    </div>
-                    <div th:if="${isLoggedIn == null or not isLoggedIn}">
-                        <span>로그인</span>
+                    </li>
+                    <li class="menu-item">
+                        <span>예매정보</span>
                         <ul class="sub-menu">
-                            <li><a th:href="@{/Sign}">회원가입</a></li>
-                            <li><a th:href="@{/Login}">로그인</a></li>
+                            <li><a th:href="@{/Reservation/Reservation-Confirm}">예약 조회</a></li>
+                            <li><a th:href="@{/Reservation/Reservation-Cancel}">예약 취소</a></li>
                         </ul>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<main>
-    <section class="hero">
-        <div class="hero-content">
-            <h2>실시간 콘서트 예약</h2>
-            <p>좋아하는 아티스트의 공연을 놓치지 마세요! 지금 바로 예약하세요.</p>
+                    </li>
+                    <li class="menu-item">
+                        <div th:if="${isLoggedIn != null and isLoggedIn}">
+                            <span>사용자 메뉴</span>
+                            <ul class="sub-menu">
+                                <li><a th:href="@{/Logout}">로그아웃</a></li>
+                                <li><a th:href="@{/MyPage}">내 정보</a></li>
+                            </ul>
+                        </div>
+                        <div th:if="${isLoggedIn == null or not isLoggedIn}">
+                            <span>로그인</span>
+                            <ul class="sub-menu">
+                                <li><a th:href="@{/Sign}">회원가입</a></li>
+                                <li><a th:href="@{/Login}">로그인</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         </div>
+    </header>
+    <!-- 슬라이더 섹션 -->
+    <section class="concert-slider">
+        <h2>인기 콘서트</h2>
+        <button class="prev-button">◀</button>
+        <div class="concert-container">
+            <!-- 슬라이드 1 -->
+            <div class="concert-item" onclick="showReservation(1)">
+                <img alt="ASKA 콘서트" src="/images/ASKA.webp">
+                <div class="slide-text">
+                    <h3 class="title">ASKA CONCERT TOUR 2025</h3>
+                    <p class="subtitle">“WHO is ASKA!？” in Seoul</p>
+                    <p class="details">고려대학교 화정체육관<br>2025.03.08</p>
+                </div>
+            </div>
+            <!-- 슬라이드 2 -->
+            <div class="concert-item" onclick="showReservation(2)">
+                <img alt="OneRepublic 콘서트" src="/images/OneRepublic.webp">
+                <div class="slide-text">
+                    <h3 class="title">OneRepublic</h3>
+                    <p class="subtitle">The Artificial Paradise Tour in Korea</p>
+                    <p class="details">인스파이어 아레나<br>2025.01.18</p>
+                </div>
+            </div>
+            <!-- 슬라이드 3 -->
+            <div class="concert-item" onclick="showReservation(3)">
+                <img alt="TAEYANG 콘서트" src="/images/TAEYANG.webp">
+                <div class="slide-text">
+                    <h3 class="title">TAEYANG 2025 TOUR</h3>
+                    <p class="subtitle">［THE LIGHT YEAR］ ENCORE</p>
+                    <p class="details">인스파이어 아레나<br>2025.02.01</p>
+                </div>
+            </div>
+            <!-- 슬라이드 4 -->
+            <div class="concert-item" onclick="showReservation(4)">
+                <img alt="김진호 콘서트" src="/images/김진호.webp">
+                <div class="slide-text">
+                    <h3 class="title">2025 김진호 콘서트</h3>
+                    <p class="subtitle">그 노래의 시작은 무엇인가</p>
+                    <p class="details">블루스퀘어 마스터카드홀<br>2025.01.25 - 2025.01.26</p>
+                </div>
+            </div>
+            <!-- 슬라이드 5 -->
+            <div class="concert-item" onclick="showReservation(5)">
+                <img alt="폴킴 콘서트" src="/images/폴킴.webp">
+                <div class="slide-text">
+                    <h3 class="title">폴킴 소극장 콘서트</h3>
+                    <p class="subtitle">〈Sincerely yours〉</p>
+                    <p class="details">블루스퀘어 마스터카드홀<br>2025.02.08 - 2025.02.16</p>
+                </div>
+            </div>
+            <!-- 슬라이드 6 -->
+            <div class="concert-item" onclick="showReservation(6)">
+                <img alt="이문세 콘서트" src="/images/이문세.webp">
+                <div class="slide-text">
+                    <h3 class="title">2024 THEATRE 이문세</h3>
+                    <p class="subtitle">“그 남자의 이야기”</p>
+                    <p class="details">청주, 창원, 익산<br>2025.03 -</p>
+                </div>
+            </div>
+            <!-- 슬라이드 7 -->
+            <div class="concert-item" onclick="showReservation(7)">
+                <img alt="이승환 콘서트" src="/images/이승환.webp">
+                <div class="slide-text">
+                    <h3 class="title">이승환 35주년 콘서트</h3>
+                    <p class="subtitle">〈HEAVEN〉</p>
+                    <p class="details">안양아트센터 관악홀<br>2025.03.22</p>
+                </div>
+            </div>
+            <!-- 슬라이드 8 -->
+            <div class="concert-item" onclick="showReservation(8)">
+                <img alt="우석 콘서트" src="/images/우석.webp">
+                <div class="slide-text">
+                    <h3 class="title">2025 우석 단독 콘서트</h3>
+                    <p class="subtitle">‘火(花)’</p>
+                    <p class="details">서강대학교 메리홀 대극장<br>2025.02.01 - 2025.02.02</p>
+                </div>
+            </div>
+        </div>
+        <button class="next-button">▶</button>
     </section>
-    <section class="concert-info">
-        <h2>추천 콘서트</h2>
-        <div class="concert-list">
-            <div class="concert-item">
-                <h3>Artist A</h3>
-                <p>날짜 : 2024-01-15</p>
-                <p>시간 : 18:00 </p>
-                <p>장소: 서울 공연장</p>
-                <a class="btn-secondary"
-                   href="javascript:void(0);"
-                   onclick="handleReservation('/Reservation')">예매하기</a>
+    <section class="reservation" id="reservation-1" style="display: none;">
+        <div class="reservation-details">
+            <div class="left-section">
+                <img alt="ASKA Concert Image" src="/images/ASKA.webp">
+                <div class="ticket-info">
+                    <span>티켓캐스트 3</span>
+                    <div class="social-icons">
+                        <button>📤</button>
+                        <button>👍</button>
+                    </div>
+                </div>
+            </div>
+            <div class="right-section">
+                <h2>ASKA CONCERT TOUR 2025 “WHO is ASKA!?” in Seoul</h2>
+                <p>콘서트 주간 38위</p>
+                <ul>
+                    <li><b>장소:</b> 고려대학교 화정체육관</li>
+                    <li><b>공연기간:</b> 2025.03.08</li>
+                    <li><b>공연시간:</b> 150분</li>
+                    <li><b>관람연령:</b> 미취학아동 입장불가</li>
+                    <li><b>가격:</b></li>
+                    <ul>
+                        <li>VIP석: 154,000원</li>
+                        <li>R석: 132,000원</li>
+                        <li>S석: 110,000원</li>
+                    </ul>
+                </ul>
+                <p><b>혜택:</b> NOL 카드 10% 적립</p>
+                <p><b>배송:</b> 2025년 2월 10일 일괄 배송</p>
+                <div class="booking-buttons">
+                    <button class="book-btn">예약하기</button>
+                    <button class="foreign-booking">Booking / 外國語</button>
+                </div>
             </div>
         </div>
     </section>
-</main>
-<footer>
-    <div class="container">
-        <p>© 2024 콘서트 예매 시스템. 모든 권리 보유.</p>
-    </div>
-</footer>
+
+    <section class="reservation" id="reservation-2" style="display: none;">
+        <h2>예약 상세정보 - 콘서트 2</h2>
+        <p>공연 날짜: 2025.02.10</p>
+        <p>가격: 120,000원</p>
+        <button onclick="hideReservation()">닫기</button>
+    </section>
+    <section class="reservation" id="reservation-3" style="display: none;">
+        <h2>예약 상세정보 - 콘서트 3</h2>
+        <p>공연 날짜: 2025.02.10</p>
+        <p>가격: 120,000원</p>
+        <button onclick="hideReservation()">닫기</button>
+    </section>
+    <section class="reservation" id="reservation-4" style="display: none;">
+        <h2>예약 상세정보 - 콘서트 4</h2>
+        <p>공연 날짜: 2025.02.10</p>
+        <p>가격: 120,000원</p>
+        <button onclick="hideReservation()">닫기</button>
+    </section>
+    <section class="reservation" id="reservation-5" style="display: none;">
+        <h2>예약 상세정보 - 콘서트 5</h2>
+        <p>공연 날짜: 2025.02.10</p>
+        <p>가격: 120,000원</p>
+        <button onclick="hideReservation()">닫기</button>
+    </section>
+    <section class="reservation" id="reservation-6" style="display: none;">
+        <h2>예약 상세정보 - 콘서트 6</h2>
+        <p>공연 날짜: 2025.02.10</p>
+        <p>가격: 120,000원</p>
+        <button onclick="hideReservation()">닫기</button>
+    </section>
+    <section class="reservation" id="reservation-7" style="display: none;">
+        <h2>예약 상세정보 - 콘서트 7</h2>
+        <p>공연 날짜: 2025.02.10</p>
+        <p>가격: 120,000원</p>
+        <button onclick="hideReservation()">닫기</button>
+    </section>
+    <section class="reservation" id="reservation-8" style="display: none;">
+        <h2>예약 상세정보 - 콘서트 8</h2>
+        <p>공연 날짜: 2025.02.10</p>
+        <p>가격: 120,000원</p>
+        <button onclick="hideReservation()">닫기</button>
+    </section>
+</div>
+<script src="/js/home.js"></script>
 </body>
 </html>
